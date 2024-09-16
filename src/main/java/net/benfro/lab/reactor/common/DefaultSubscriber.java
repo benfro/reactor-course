@@ -21,12 +21,17 @@ public class DefaultSubscriber<T> implements Subscriber<T> {
     @Getter
     private final String name;
 
+    @Getter
+    private Subscription subscription;
+
+
     DefaultSubscriber() {
         this.name = "";
     }
 
     @Override
     public void onSubscribe(Subscription subscription) {
+        this.subscription = subscription;
         subscription.request(Long.MAX_VALUE);
         log.info("onSubscribe {}", name);
     }

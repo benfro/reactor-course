@@ -18,6 +18,6 @@ public class NameGenerator implements Consumer<FluxSink<String>> {
         for (int i = 0; i < numNames; i++) {
             this.sink.next(Util.faker.name().firstName());
         }
-        sink.complete();
+        //sink.complete();
     }
 }
