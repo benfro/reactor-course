@@ -67,7 +67,22 @@ public class FluxCreate {
             }
             fluxSink.complete();
         }).subscribe(subscriber);
+        requestItems(subscriber);
+    }
 
+    static void produceOnDemand() {
+        var subscriber = new SubscriberImpl();
+        Flux.<String>create(fluxSink -> {
+            fluxSink.onRequest(request -> {
+                for (int i = 0; i < request; i++) {
+                    fluxSink.next(Util.faker.name().firstName());
+                }
+            });
+        }).subscribe(subscriber);
+        requestItems(subscriber);
+    }
+
+    private static void requestItems(SubscriberImpl subscriber) {
         Util.sleep(2);
         subscriber.getSubscription().request(2);
         Util.sleep(2);
@@ -81,6 +96,7 @@ public class FluxCreate {
 //        generateNames(100);
 //        notThreadSafe();
 //        threadSafe();
-        produceEarly();
+//        produceEarly();
+        produceOnDemand();
     }
 }
