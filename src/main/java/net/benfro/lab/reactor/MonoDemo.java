@@ -18,5 +18,4 @@ public class MonoDemo {
         return list.stream().mapToInt(i -> i).sum();
     }
 
-
 }

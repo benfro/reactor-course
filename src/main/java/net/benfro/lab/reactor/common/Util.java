@@ -4,9 +4,6 @@ import com.github.javafaker.Faker;
 
 public class Util {
 
-    private static Faker faker;
+    public final static Faker faker = new Faker();
 
-    public static Faker getFaker() {
-        return faker;
-    }
 }
