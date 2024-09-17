@@ -1,6 +1,7 @@
 package net.benfro.lab.reactor;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import lombok.extern.slf4j.Slf4j;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
@@ -91,12 +92,43 @@ public class FluxCreate {
         subscriber.getSubscription().cancel();
     }
 
+    static void takeMethods() {
+        Flux.range(1, 10)
+            .take(3)
+//            .takeWhile(i -> i % 3 == 0)
+//            .takeUntil(i -> i % 3 == 0)
+            .subscribe(DefaultSubscriber.of());
+    }
+
+    static void generateExternalState() {
+        AtomicInteger ai = new AtomicInteger(1);
+        Flux.generate(sink -> {
+                sink.next(ai.getAndIncrement());
+            })
+            .take(10)
+            .subscribe(DefaultSubscriber.of());
+    }
+
+    static void generateInternalState() {
+        Flux.generate(
+                () -> 1,
+                (state, sink) -> {
+                    sink.next(state++);
+                    return state;
+                })
+            .take(10)
+            .subscribe(DefaultSubscriber.of());
+    }
+
     public static void main(String[] args) {
 //        createFluxWithSink();
 //        generateNames(100);
 //        notThreadSafe();
 //        threadSafe();
 //        produceEarly();
-        produceOnDemand();
+//        produceOnDemand();
+//        takeMethods();
+//        generateExternalState();
+        generateInternalState();
     }
 }
