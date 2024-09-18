@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import lombok.extern.slf4j.Slf4j;
+import net.benfro.lab.reactor.assignment3.FileReaderImpl;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
 import net.benfro.lab.reactor.common.SubscriberImpl;
 import net.benfro.lab.reactor.common.Util;
@@ -109,6 +110,8 @@ public class FluxCreate {
             .subscribe(DefaultSubscriber.of());
     }
 
+
+
     static void generateInternalState() {
         Flux.generate(
                 () -> 1,
@@ -120,6 +123,14 @@ public class FluxCreate {
             .subscribe(DefaultSubscriber.of());
     }
 
+    static void assignment3() {
+        var subscriber = new SubscriberImpl();
+        var fileService = new FileReaderImpl();
+        fileService.read("rows.txt")
+            .subscribe(subscriber);
+        requestItems(subscriber);
+    }
+
     public static void main(String[] args) {
 //        createFluxWithSink();
 //        generateNames(100);
@@ -129,6 +140,7 @@ public class FluxCreate {
 //        produceOnDemand();
 //        takeMethods();
 //        generateExternalState();
-        generateInternalState();
+//        generateInternalState();
+        assignment3();
     }
 }
