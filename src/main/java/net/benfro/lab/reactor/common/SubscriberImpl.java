@@ -5,9 +5,11 @@ import org.reactivestreams.Subscription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SubscriberImpl implements Subscriber<String> {
+import lombok.extern.slf4j.Slf4j;
 
-    private static final Logger log = LoggerFactory.getLogger(SubscriberImpl.class);
+@Slf4j
+public class SubscriberImpl<T> implements Subscriber<T> {
+
     private Subscription subscription;
 
     public Subscription getSubscription() {
@@ -20,7 +22,7 @@ public class SubscriberImpl implements Subscriber<String> {
     }
 
     @Override
-    public void onNext(String email) {
+    public void onNext(T email) {
         log.info("received: {}", email);
     }
 

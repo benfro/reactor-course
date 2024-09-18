@@ -9,22 +9,19 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
+@Getter
 public class DefaultSubscriber<T> implements Subscriber<T> {
 
-    public static DefaultSubscriber of() {
-        return new DefaultSubscriber();
+    public static <T> DefaultSubscriber<T> of() {
+        return new DefaultSubscriber<T>();
     }
 
-    public static DefaultSubscriber of(String name) {
-        return new DefaultSubscriber(name);
+    public static <T> DefaultSubscriber<T> of(String name) {
+        return new DefaultSubscriber<T>(name);
     }
 
-    @Getter
     private final String name;
-
-    @Getter
     private Subscription subscription;
-
 
     DefaultSubscriber() {
         this.name = "";
@@ -34,41 +31,22 @@ public class DefaultSubscriber<T> implements Subscriber<T> {
     public void onSubscribe(Subscription subscription) {
         this.subscription = subscription;
         subscription.request(Long.MAX_VALUE);
-        log.info("onSubscribe {}", name);
+        log.info("subscriber [{}] in 'onSubscribe'", name);
     }
 
     @Override
     public void onNext(T t) {
-        log.info("onNext: {} {}", t.toString(), name);
+        log.info("subcriber [{}] in 'onNext' - element is :: {}", name, t.toString());
     }
 
     @Override
     public void onError(Throwable throwable) {
-        log.error("onError {}", name, throwable);
+        log.error("subcriber [{}] in 'onError'", name, throwable);
     }
 
     @Override
     public void onComplete() {
-        log.info("onComplete {}", name);
+        log.info("subscriber [{}] in 'onComplete'", name);
     }
 
-//    @Override
-//    public void onSubscribe(Subscription subscription) {
-//        log.info("onSubscribe {}", name);
-//    }
-//
-//    @Override
-//    public void onNext(T o) {
-//        log.info("onNext: {} {}", o.toString(), name );
-//    }
-//
-//    @Override
-//    public void onError(Throwable throwable) {
-//        log.error("onError {}", name, throwable);
-//    }
-//
-//    @Override
-//    public void onComplete() {
-//        log.info("onComplete {}", name);
-//    }
 }
