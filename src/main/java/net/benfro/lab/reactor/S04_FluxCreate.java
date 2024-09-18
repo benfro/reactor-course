@@ -12,7 +12,7 @@ import net.benfro.lab.reactor.helper.NameGenerator;
 import reactor.core.publisher.Flux;
 
 @Slf4j
-public class FluxCreate {
+public class S04_FluxCreate {
 
     static void createFluxWithSink() {
         Flux.create(sink -> {
@@ -109,7 +109,6 @@ public class FluxCreate {
             .take(10)
             .subscribe(DefaultSubscriber.of());
     }
-
 
 
     static void generateInternalState() {

@@ -6,12 +6,10 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @Slf4j
-class MonoDemoTest {
+class S02MonoDemoTest {
 
-    MonoDemo instance = new MonoDemo();
+    S02_MonoDemo instance = new S02_MonoDemo();
 
     @Test
     void testSubscribe() {

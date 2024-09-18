@@ -1,10 +1,10 @@
 package net.benfro.lab.reactor;
 
-import reactor.core.publisher.Mono;
-
 import java.util.List;
 
-public class MonoDemo {
+import reactor.core.publisher.Mono;
+
+public class S02_MonoDemo {
 
     Mono<String> getMono(String string) {
         return Mono.just(string);

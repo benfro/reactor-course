@@ -6,7 +6,7 @@ import net.benfro.lab.reactor.common.DefaultSubscriber;
 import net.benfro.lab.reactor.common.Util;
 import reactor.core.publisher.Flux;
 
-public class FluxDemo {
+public class S03_FluxDemo {
 
     public static void main(String[] args) {
 

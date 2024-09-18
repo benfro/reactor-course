@@ -1,12 +1,11 @@
 package net.benfro.lab.reactor.assignment1;
 
-import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Mono;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.stream.Collectors;
+
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
 
 @Slf4j
 public class FileServiceImpl implements FileService {
@@ -17,7 +16,7 @@ public class FileServiceImpl implements FileService {
     @Override
     public Mono<String> read(String fileName) {
         return Mono.fromCallable(
-                () -> String.join("", Files.readAllLines(Paths.get(BASE_PATH, fileName).toAbsolutePath()))
+            () -> String.join("", Files.readAllLines(Paths.get(BASE_PATH, fileName).toAbsolutePath()))
         );
     }
 

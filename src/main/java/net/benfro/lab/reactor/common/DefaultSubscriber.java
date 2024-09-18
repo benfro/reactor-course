@@ -1,10 +1,11 @@
 package net.benfro.lab.reactor.common;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class DefaultSubscriber<T> implements Subscriber<T> {
 
     @Override
     public void onNext(T t) {
-        log.info("onNext: {} {}", t.toString(), name );
+        log.info("onNext: {} {}", t.toString(), name);
     }
 
     @Override
