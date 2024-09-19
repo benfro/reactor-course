@@ -61,7 +61,7 @@ public class S05_FluxOperators {
             .subscribe(DefaultSubscriber.of());
     }
 
-    static void delay() {
+    static void delayElements() {
         var subscriber = new SubscriberImpl<Integer>();
         Flux.range(1, 10)
             .log()
@@ -72,17 +72,52 @@ public class S05_FluxOperators {
         Util.sleep(12);
     }
 
-    // Error handling Pt 1
-    // .onErrorReturn(value)
-    // .onErrorReturn(Exception, value)
-    // Pt 2
-    // .onErrorResume(exception -> fallback method)
-    // .onErrorResume(exception -> fallback method2)
-    // .onErrorReturn(2) <== catches errors in the error handler above
-    // Pt 3
-    // .onErrorComplete()
     // Pt 4
     // .onErrorContinue((exc, obj) -> doit)
+
+    static void onErrorReturn() {
+
+        Flux.range(1, 10)
+            .map(item -> item == 5 ? item / (item - 5) : item)
+            .onErrorReturn(5)
+            .subscribe(DefaultSubscriber.of());
+
+        Flux.range(1, 10)
+            .map(item -> item == 5 ? item / (item - 5) : item)
+            .onErrorReturn(ArithmeticException.class, 5)
+            .subscribe(DefaultSubscriber.of());
+    }
+
+    static void onErrorResume() {
+
+        Flux.range(1, 10)
+            .map(item -> item == 5 ? item / (item - 5) : item)
+            .onErrorResume(ex -> Flux.just(55))
+            .subscribe(DefaultSubscriber.of());
+
+        Flux.range(1, 10)
+            .map(item -> item == 5 ? item / (item - 5) : item)
+            .onErrorResume(ex -> Flux.just(55/0))
+            .onErrorReturn(5)
+            .subscribe(DefaultSubscriber.of());
+    }
+
+    static void onErrorComplete() {
+
+        Flux.range(1, 10)
+            .map(item -> item == 5 ? item / (item - 5) : item)
+            .onErrorComplete()
+            .subscribe(DefaultSubscriber.of());
+    }
+
+    static void onErrorContinue() {
+
+        Flux.range(1, 10)
+            .map(item -> item == 5 ? item / (item - 5) : item)
+            .onErrorContinue((ex, obj) -> log.error("It went south with {} because of {}", obj, ex.getMessage()))
+            .subscribe(DefaultSubscriber.of());
+    }
+
 
     // .defaultIfEmpty(default value)
     // .switchIfEmpty( fallback)
@@ -98,7 +133,11 @@ public class S05_FluxOperators {
     public static void main(String[] args) {
 //        exploreHandle();
 //        doCallbacks();
-        delay();
+//        delayElements();
+//        onErrorReturn();
+//        onErrorResume();
+//        onErrorComplete();
+        onErrorContinue();
     }
 
 }
