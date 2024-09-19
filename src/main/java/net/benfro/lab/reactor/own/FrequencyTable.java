@@ -56,7 +56,6 @@ public class FrequencyTable {
     }
 
     private static SecureRandom getGenerator() {
-//        return new SecureRandom(new SecureRandom().generateSeed(20));
         return random;
     }
 
@@ -67,15 +66,12 @@ public class FrequencyTable {
 
     public static void main(String[] args) {
 
-        var freqTable = new FrequencyCounter();
+        var frequencyCounter = new FrequencyCounter();
 
         Runnable r = () -> {
             publishRandoms()
                 .take(1000000)
-                .doFinally(x -> log.info("Max frequency: {} for {}",
-                    freqTable.getMax(),
-                    freqTable.toBiMap().inverse().get(freqTable.getMax())))
-                .subscribe(freqTable::put);
+                .subscribe(frequencyCounter::put);
         };
 
         for (int i = 0; i < 10; i++) {
@@ -83,7 +79,10 @@ public class FrequencyTable {
         }
 
         Util.sleep(12);
-        log.info("Sum: {}", freqTable.getFrequencies().values().stream().mapToLong(Long::longValue).sum());
+        log.info("Max frequency: {} for {}",
+            frequencyCounter.getMax(),
+            frequencyCounter.toBiMap().inverse().get(frequencyCounter.getMax()));
+        log.info("Sum: {}", frequencyCounter.getFrequencies().values().stream().mapToLong(Long::longValue).sum());
     }
 
 }
