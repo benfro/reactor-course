@@ -72,6 +72,29 @@ public class S05_FluxOperators {
         Util.sleep(12);
     }
 
+    // Error handling Pt 1
+    // .onErrorReturn(value)
+    // .onErrorReturn(Exception, value)
+    // Pt 2
+    // .onErrorResume(exception -> fallback method)
+    // .onErrorResume(exception -> fallback method2)
+    // .onErrorReturn(2) <== catches errors in the error handler above
+    // Pt 3
+    // .onErrorComplete()
+    // Pt 4
+    // .onErrorContinue((exc, obj) -> doit)
+
+    // .defaultIfEmpty(default value)
+    // .switchIfEmpty( fallback)
+    // .timeout(duration)
+    // .timeout(duration, callback publisher)
+    // Combine timeout with error handler
+    // Least duration timeout rulez! (shorter overshadows longer)
+
+    // transform = reusable group of operators
+    // <T> UnaryOperator<Flux<T>> - return flux -> flux..
+
+
     public static void main(String[] args) {
 //        exploreHandle();
 //        doCallbacks();
