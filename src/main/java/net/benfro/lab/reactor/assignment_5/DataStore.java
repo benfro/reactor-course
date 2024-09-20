@@ -4,19 +4,19 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
-public class DataStore<String,Integer> {
+public class DataStore<String, V extends Number> {
 
-    Map<String,Integer> data = Maps.newHashMap();
+    Map<String, Integer> data = Maps.newHashMap();
 
-    Integer get( String key) {
+    public Integer get( String key) {
         return data.get(key);
     }
 
-    void update(String key, Integer value) {
+    public void update(String key, Integer value) {
         data.put(key, value);
     }
 
-    void updateAdd(String key, Integer value) {
+    public void updateAdd(String key, Integer value) {
         data.compute(key, (k, v) -> Integer.valueOf(value) + Integer.valueOf(v));
     }
 
