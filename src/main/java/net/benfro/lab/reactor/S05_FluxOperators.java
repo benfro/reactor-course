@@ -1,6 +1,7 @@
 package net.benfro.lab.reactor;
 
 import java.time.Duration;
+import java.util.function.UnaryOperator;
 
 import lombok.extern.slf4j.Slf4j;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
@@ -72,9 +73,6 @@ public class S05_FluxOperators {
         Util.sleep(12);
     }
 
-    // Pt 4
-    // .onErrorContinue((exc, obj) -> doit)
-
     static void onErrorReturn() {
 
         Flux.range(1, 10)
@@ -118,17 +116,39 @@ public class S05_FluxOperators {
             .subscribe(DefaultSubscriber.of());
     }
 
+    static void emptiesBehave() {
+        Flux.empty()
+            .defaultIfEmpty("I am empty")
+            .subscribe(DefaultSubscriber.of());
 
-    // .defaultIfEmpty(default value)
-    // .switchIfEmpty( fallback)
-    // .timeout(duration)
-    // .timeout(duration, callback publisher)
-    // Combine timeout with error handler
-    // Least duration timeout rulez! (shorter overshadows longer)
+        Flux.empty()
+            .switchIfEmpty(switchMethod())
+            .subscribe(DefaultSubscriber.of());
+    }
 
-    // transform = reusable group of operators
-    // <T> UnaryOperator<Flux<T>> - return flux -> flux..
+    private static Flux<String> switchMethod() {
+        return Flux.just("I am empty too");
+    }
 
+    static void timeoutIsOfTheEssence() {
+        // .timeout(duration)
+        // .timeout(duration, callback publisher)
+        // Combine timeout with error handler
+        // Least duration timeout rulez! (shorter overshadows longer)
+    }
+
+    static void transformUsLord() {
+        // transform = reusable group of operators
+        UnaryOperator<Flux<Integer>> extraTrans = flux -> flux.doOnRequest(l -> log.info("Requested: {}", l));
+
+        Flux.range(1, 10)
+            .delayElements(Duration.ofMillis(1000))
+            .transform(flux -> flux.doFirst(() -> log.info("Hi there!!!")).doOnComplete(() -> log.info("We're done")))
+            .transform(extraTrans)
+            .subscribe(DefaultSubscriber.of());
+
+        Util.sleep(10);
+    }
 
     public static void main(String[] args) {
 //        exploreHandle();
@@ -137,7 +157,10 @@ public class S05_FluxOperators {
 //        onErrorReturn();
 //        onErrorResume();
 //        onErrorComplete();
-        onErrorContinue();
+//        onErrorContinue();
+//        emptiesBehave();
+        timeoutIsOfTheEssence();
+        transformUsLord();
     }
 
 }
