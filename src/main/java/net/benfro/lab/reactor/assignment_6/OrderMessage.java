@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.assignment_5;
+package net.benfro.lab.reactor.assignment_6;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

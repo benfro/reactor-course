@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.assignment_5;
+package net.benfro.lab.reactor.assignment_6;
 
 public record Order(String item, String category, int price, int quantity) {
 
