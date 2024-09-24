@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor;
+package net.benfro.lab.reactor.S09_combinations;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -8,18 +8,15 @@ import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 @Slf4j
 public class CombiningPublishers {
 
     public static void main(String[] args) {
-            //producer1()
-            //        .startWith(-1,0)
-            //        .take(2)
-            //        .subscribe(DefaultSubscriber.of());
 
         //demo2();
-        demo3();
+        demo1();
 
         Util.sleep(8);
     }
@@ -40,8 +37,14 @@ public class CombiningPublishers {
     static void demo1() {
         producer1()
                 .startWith(-1,0)
+                .transform(addStartWith(1, 2, 3, 4, 5))
                 //.take(2)
                 .subscribe(DefaultSubscriber.of());
+    }
+
+    private static <T> UnaryOperator<Flux<T>> addStartWith(T item, T... items) {
+        return flux -> flux.startWith(items).startWith(item);
+//        return flux -> flux.doOnSubscribe(i -> log.info(""));
     }
 
     static void demo2() {
