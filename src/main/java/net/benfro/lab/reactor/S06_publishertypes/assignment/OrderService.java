@@ -1,8 +1,8 @@
-package net.benfro.lab.reactor.S06_publishertypes.assignment_6;
+package net.benfro.lab.reactor.S06_publishertypes.assignment;
 
 import java.time.Duration;
 
-import net.benfro.lab.reactor.S06_publishertypes.assignment_6.revenue.RevenueService;
+import net.benfro.lab.reactor.S06_publishertypes.assignment.revenue.RevenueService;
 import net.benfro.lab.reactor.common.AbstractHttpClient;
 import net.benfro.lab.reactor.common.Util;
 import reactor.core.publisher.Flux;

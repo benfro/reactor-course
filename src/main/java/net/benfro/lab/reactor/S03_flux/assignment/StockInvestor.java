@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.S03_flux.assignment2;
+package net.benfro.lab.reactor.S03_flux.assignment;
 
 import java.time.Duration;
 

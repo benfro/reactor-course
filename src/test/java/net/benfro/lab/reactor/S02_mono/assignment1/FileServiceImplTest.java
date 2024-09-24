@@ -1,8 +1,8 @@
 package net.benfro.lab.reactor.S02_mono.assignment1;
 
 import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.S02_mono.assignment1.FileService;
-import net.benfro.lab.reactor.S02_mono.assignment1.FileServiceImpl;
+import net.benfro.lab.reactor.S02_mono.assignment.FileService;
+import net.benfro.lab.reactor.S02_mono.assignment.FileServiceImpl;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;

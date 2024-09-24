@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.S03_flux.assignment2;
+package net.benfro.lab.reactor.S03_flux.assignment;
 
 import net.benfro.lab.reactor.common.AbstractHttpClient;
 import reactor.core.publisher.Flux;

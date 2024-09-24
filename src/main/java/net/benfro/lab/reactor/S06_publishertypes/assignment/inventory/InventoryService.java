@@ -1,7 +1,7 @@
-package net.benfro.lab.reactor.S06_publishertypes.assignment_6.inventory;
+package net.benfro.lab.reactor.S06_publishertypes.assignment.inventory;
 
 import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.S06_publishertypes.assignment_6.Order;
+import net.benfro.lab.reactor.S06_publishertypes.assignment.Order;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 

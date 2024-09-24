@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.S06_publishertypes.assignment_6;
+package net.benfro.lab.reactor.S06_publishertypes.assignment;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

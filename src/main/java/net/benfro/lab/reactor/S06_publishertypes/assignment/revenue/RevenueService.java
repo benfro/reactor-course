@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.S06_publishertypes.assignment_6.revenue;
+package net.benfro.lab.reactor.S06_publishertypes.assignment.revenue;
 
 import java.time.Duration;
 
@@ -8,7 +8,7 @@ import org.reactivestreams.Subscription;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.S06_publishertypes.assignment_6.Order;
+import net.benfro.lab.reactor.S06_publishertypes.assignment.Order;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

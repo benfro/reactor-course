@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.S02_mono.assignment1;
+package net.benfro.lab.reactor.S02_mono.assignment;
 
 import java.io.IOException;
 import java.nio.file.Files;

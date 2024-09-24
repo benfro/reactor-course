@@ -23,11 +23,8 @@ public class FrequencyTable {
 //        private final Map<Integer, Long> frequencies = Maps.newHashMap();
 
         public void put(int key) {
-            if (frequencies.containsKey(key)) {
-                frequencies.compute(key, (k, l) -> l + 1);
-            } else {
-                frequencies.put(key, 1L);
-            }
+            frequencies.putIfAbsent(key, 0L);
+            frequencies.compute(key, (k, l) -> l + 1);
         }
 
         public long get(int key) {
@@ -50,9 +47,8 @@ public class FrequencyTable {
     static Flux<Integer> publishRandoms() {
         return Flux.generate(
             FrequencyTable::getGenerator,
-            FrequencyTable::generate,
-            generator -> {
-            });
+            FrequencyTable::generate
+           );
     }
 
     private static SecureRandom getGenerator() {

@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.S04_fluxcreate.assignment3;
+package net.benfro.lab.reactor.S04_fluxcreate.assignment;
 
 import reactor.core.publisher.Flux;
 

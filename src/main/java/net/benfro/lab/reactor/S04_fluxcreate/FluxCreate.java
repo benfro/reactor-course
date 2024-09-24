@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.S04_fluxcreate.assignment3.FileReaderImpl;
+import net.benfro.lab.reactor.S04_fluxcreate.assignment.FileReaderImpl;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
 import net.benfro.lab.reactor.common.SubscriberImpl;
 import net.benfro.lab.reactor.common.Util;
