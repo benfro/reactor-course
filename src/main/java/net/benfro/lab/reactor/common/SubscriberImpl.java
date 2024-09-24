@@ -2,12 +2,12 @@ package net.benfro.lab.reactor.common;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Getter
 public class SubscriberImpl<T> implements Subscriber<T> {
 
     private Subscription subscription;

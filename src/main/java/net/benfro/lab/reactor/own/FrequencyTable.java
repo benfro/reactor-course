@@ -7,7 +7,7 @@ import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Maps;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.common.Util;
+import net.benfro.lab.reactor.common.RunUtilities;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.SynchronousSink;
 
@@ -20,7 +20,6 @@ public class FrequencyTable {
     static class FrequencyCounter {
 
         private final Map<Integer, Long> frequencies = Maps.newConcurrentMap();
-//        private final Map<Integer, Long> frequencies = Maps.newHashMap();
 
         public void put(int key) {
             frequencies.putIfAbsent(key, 0L);
@@ -64,17 +63,15 @@ public class FrequencyTable {
 
         var frequencyCounter = new FrequencyCounter();
 
-        Runnable r = () -> {
-            publishRandoms()
-                .take(1000000)
-                .subscribe(frequencyCounter::put);
-        };
+        Runnable r = () -> publishRandoms()
+            .take(1000000)
+            .subscribe(frequencyCounter::put);
 
         for (int i = 0; i < 10; i++) {
             Thread.ofPlatform().start(r);
         }
 
-        Util.sleep(12);
+        RunUtilities.sleep(12);
         log.info("Max frequency: {} for {}",
             frequencyCounter.getMax(),
             frequencyCounter.toBiMap().inverse().get(frequencyCounter.getMax()));

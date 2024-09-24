@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.common;
+package net.benfro.lab.reactor.webclient;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

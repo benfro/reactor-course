@@ -1,14 +1,14 @@
-package net.benfro.lab.reactor.helper;
+package net.benfro.lab.reactor.generator;
 
 import java.util.function.Consumer;
 
 import reactor.core.publisher.FluxSink;
 
-public abstract class AbstractFluxSinkGenerator<T> implements Consumer<FluxSink<T>> {
+abstract class AbstractFluxSinkGenerator<T> implements Consumer<FluxSink<T>> {
 
     protected FluxSink<T> sink;
 
-    abstract public void generate();
+    public abstract void generate();
 
     @Override
     public void accept(FluxSink<T> sink) {

@@ -1,6 +1,6 @@
 package net.benfro.lab.reactor.S03_flux.assignment;
 
-import net.benfro.lab.reactor.common.AbstractHttpClient;
+import net.benfro.lab.reactor.webclient.AbstractHttpClient;
 import reactor.core.publisher.Flux;
 
 public class StockServiceClient extends AbstractHttpClient {

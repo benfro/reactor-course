@@ -6,9 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import lombok.extern.slf4j.Slf4j;
 import net.benfro.lab.reactor.S04_fluxcreate.assignment.FileReaderImpl;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
+import net.benfro.lab.reactor.common.RunUtilities;
 import net.benfro.lab.reactor.common.SubscriberImpl;
-import net.benfro.lab.reactor.common.Util;
-import net.benfro.lab.reactor.helper.NameGenerator;
+import net.benfro.lab.reactor.generator.GenerateUtility;
+import net.benfro.lab.reactor.generator.NameGenerator;
 import reactor.core.publisher.Flux;
 
 @Slf4j
@@ -39,7 +40,7 @@ public class FluxCreate {
         for (int i = 0; i < 10; i++) {
             Thread.ofPlatform().start(r);
         }
-        Util.sleep(10);
+        RunUtilities.sleep(10);
         log.info("Size of list is {}", list.size());
     }
 
@@ -57,7 +58,7 @@ public class FluxCreate {
         for (int i = 0; i < 10; i++) {
             Thread.ofPlatform().start(r);
         }
-        Util.sleep(10);
+        RunUtilities.sleep(10);
         log.info("Size of list is {}", list.size());
     }
 
@@ -65,7 +66,7 @@ public class FluxCreate {
         var subscriber = new SubscriberImpl();
         Flux.<String>create(fluxSink -> {
             for (int i = 0; i < 10; i++) {
-                fluxSink.next(Util.faker.name().firstName());
+                fluxSink.next(GenerateUtility.faker.name().firstName());
             }
             fluxSink.complete();
         }).subscribe(subscriber);
@@ -77,7 +78,7 @@ public class FluxCreate {
         Flux.<String>create(fluxSink -> {
             fluxSink.onRequest(request -> {
                 for (int i = 0; i < request; i++) {
-                    fluxSink.next(Util.faker.name().firstName());
+                    fluxSink.next(GenerateUtility.faker.name().firstName());
                 }
             });
         }).subscribe(subscriber);
@@ -85,11 +86,11 @@ public class FluxCreate {
     }
 
     private static void requestItems(SubscriberImpl subscriber) {
-        Util.sleep(2);
+        RunUtilities.sleep(2);
         subscriber.getSubscription().request(2);
-        Util.sleep(2);
+        RunUtilities.sleep(2);
         subscriber.getSubscription().request(2);
-        Util.sleep(2);
+        RunUtilities.sleep(2);
         subscriber.getSubscription().cancel();
     }
 

@@ -2,11 +2,11 @@ package net.benfro.lab.reactor.common;
 
 import java.time.Duration;
 
-import com.github.javafaker.Faker;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-public class Util {
-
-    public final static Faker faker = new Faker();
+@NoArgsConstructor(access= AccessLevel.PRIVATE)
+public class RunUtilities {
 
     public static void sleep(int seconds) {
         try {
@@ -16,8 +16,9 @@ public class Util {
         }
     }
 
+    ///
+    /// No Op method
+    ///
     public static void noOp() {
     }
-
-
 }

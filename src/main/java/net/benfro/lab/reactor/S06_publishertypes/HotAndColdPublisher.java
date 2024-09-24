@@ -4,7 +4,7 @@ import java.time.Duration;
 
 import lombok.extern.slf4j.Slf4j;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
-import net.benfro.lab.reactor.common.Util;
+import net.benfro.lab.reactor.common.RunUtilities;
 import reactor.core.publisher.Flux;
 
 @Slf4j
@@ -27,9 +27,9 @@ public class HotAndColdPublisher {
         var john = DefaultSubscriber.of("john");
 
         flux.subscribe(mike);
-        Util.sleep(2);
+        RunUtilities.sleep(2);
         flux.subscribe(john);
-        Util.sleep(10);
+        RunUtilities.sleep(10);
     }
 
     static void coldSubscriberBehaviour() {
@@ -41,9 +41,9 @@ public class HotAndColdPublisher {
         var john = DefaultSubscriber.of("john");
 
         flux.subscribe(mike);
-        Util.sleep(2);
+        RunUtilities.sleep(2);
         flux.subscribe(john);
-        Util.sleep(10);
+        RunUtilities.sleep(10);
     }
 
     private static Flux<String> movieStreaming() {

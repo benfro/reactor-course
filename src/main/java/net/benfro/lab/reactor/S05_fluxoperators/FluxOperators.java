@@ -5,8 +5,8 @@ import java.util.function.UnaryOperator;
 
 import lombok.extern.slf4j.Slf4j;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
+import net.benfro.lab.reactor.common.RunUtilities;
 import net.benfro.lab.reactor.common.SubscriberImpl;
-import net.benfro.lab.reactor.common.Util;
 import reactor.core.publisher.Flux;
 
 @Slf4j
@@ -21,7 +21,7 @@ public class FluxOperators {
                         case 1 -> sink.next(-2);
                         case 4 -> sink.next("apa");
                         case 7 -> sink.error(new RuntimeException("oops"));
-                        default -> Util.noOp();
+                        default -> RunUtilities.noOp();
                     }
                 }
             ).subscribe(DefaultSubscriber.of());
@@ -70,7 +70,7 @@ public class FluxOperators {
             .subscribe(subscriber);
         subscriber.getSubscription().request(Long.MAX_VALUE);
 
-        Util.sleep(12);
+        RunUtilities.sleep(12);
     }
 
     static void onErrorReturn() {
@@ -147,7 +147,7 @@ public class FluxOperators {
             .transform(extraTrans)
             .subscribe(DefaultSubscriber.of());
 
-        Util.sleep(10);
+        RunUtilities.sleep(10);
     }
 
     public static void main(String[] args) {

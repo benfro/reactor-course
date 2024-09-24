@@ -3,8 +3,8 @@ package net.benfro.lab.reactor.S06_publishertypes.assignment;
 import java.time.Duration;
 
 import net.benfro.lab.reactor.S06_publishertypes.assignment.revenue.RevenueService;
-import net.benfro.lab.reactor.common.AbstractHttpClient;
-import net.benfro.lab.reactor.common.Util;
+import net.benfro.lab.reactor.common.RunUtilities;
+import net.benfro.lab.reactor.webclient.AbstractHttpClient;
 import reactor.core.publisher.Flux;
 
 public class OrderService {
@@ -41,7 +41,7 @@ public class OrderService {
                 .subscribe(System.out::println);
             ;
 //        subscriber.getSubscription().request(Long.MAX_VALUE);
-        Util.sleep(20);
+        RunUtilities.sleep(20);
     }
 
 }

@@ -1,14 +1,14 @@
 package net.benfro.lab.reactor.S09_combinations;
 
 
-import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.common.DefaultSubscriber;
-import net.benfro.lab.reactor.common.Util;
-import reactor.core.publisher.Flux;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.function.UnaryOperator;
+
+import lombok.extern.slf4j.Slf4j;
+import net.benfro.lab.reactor.common.DefaultSubscriber;
+import net.benfro.lab.reactor.common.RunUtilities;
+import reactor.core.publisher.Flux;
 
 @Slf4j
 public class CombiningPublishers {
@@ -18,7 +18,7 @@ public class CombiningPublishers {
         //demo2();
         demo1();
 
-        Util.sleep(8);
+        RunUtilities.sleep(8);
     }
 
 //    Concat
