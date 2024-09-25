@@ -178,6 +178,11 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.7.0</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.7.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -191,4 +196,95 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>graal</id>
+            <properties>
+                <graal.home>/Library/Java/JavaVirtualMachines/graalvm-21.jdk/Contents/Home</graal.home>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.13.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <!--                                <goals>-->
+                                <!--                                    <goal></goal>-->
+                                <!--                                </goals>-->
+                            </execution>
+                        </executions>
+                        <configuration>
+
+
+                            <verbose>true</verbose>
+                            <fork>true</fork>
+                            <executable>${graal.home}/bin/javac</executable>
+                            <!--                            <compilerVersion>17</compilerVersion>-->
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>org.projectlombok</groupId>
+                                    <artifactId>lombok</artifactId>
+                                    <version>1.18.34</version>
+                                </path>
+                            </annotationProcessorPaths>
+
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <addMavenDescriptor/>
+                                <!--                                <compress/>-->
+                                <!--                                <forced/>-->
+                                <!--                                <index/>-->
+                                <!--                                <pomPropertiesFile/>-->
+
+                                <!--                                <manifestFile/>-->
+                                <manifest>
+                                    <addClasspath/>
+                                    <!--                                    <addDefaultEntries/>-->
+                                    <!--                                    <addDefaultImplementationEntries/>-->
+                                    <!--                                    <addDefaultSpecificationEntries/>-->
+                                    <!--                                <addBuildEnvironmentEntries/>-->
+                                    <!--                                <addExtensions/>-->
+                                    <!--                                <classpathLayoutType/>-->
+                                    <!--                                <classpathPrefix/>-->
+                                    <!--                                <customClasspathLayout/>-->
+                                    <mainClass>net.benfro.lab.reactor.S09_combinations.CombiningPublishers</mainClass>
+                                    <!--                                <packageName/>-->
+                                    <!--                                <useUniqueVersions/>-->
+                                </manifest>
+                                <!--                            <manifestEntries>-->
+                                <!--                                <key>value</key>-->
+                                <!--                            </manifestEntries>-->
+                                <!--                            <manifestSections>-->
+                                <!--                                <name/>-->
+                                <!--                                <manifestEntries>-->
+                                <!--                                    <key>value</key>-->
+                                <!--                                </manifestEntries>-->
+                                <!--                                <manifestSection/>-->
+                                <!--                            </manifestSections>-->
+                            </archive>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
