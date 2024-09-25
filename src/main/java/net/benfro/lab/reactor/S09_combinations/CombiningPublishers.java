@@ -22,17 +22,23 @@ public class CombiningPublishers {
     }
 
 //    Concat
-//    concatWit()
-//    concatWitValues()
+//    concatWith()
+//    concatWithValues()
 //    Flux.concat(prod1, prod2, ..)
 //    Flux.concatDelayError()
+//    startWith <==> concat
 
 //    Merge
 //    Order not guaranteed!!
-//    Use case: same data from multiple sources
+//    Use case: same data type from multiple sources
 
 //    Zip
+//    Combine Flux<A> and Flux<B> into Flux<A,B>
 //    Kombination!
+
+    // FlatMap
+    //
+    //
 
     static void demo1() {
         producer1()
