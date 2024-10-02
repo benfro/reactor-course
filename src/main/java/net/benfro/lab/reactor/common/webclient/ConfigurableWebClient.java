@@ -28,6 +28,14 @@ public class ConfigurableWebClient extends AbstractHttpClient {
                 .next();
     }
 
+    public Mono<String> getChuckJoke(String uri) {
+        return this.httpClient.get()
+            .uri(uri)
+            .responseContent()
+            .asString()
+            .next();
+    }
+
     public Mono<Integer> intMono(int id, String uri) {
         return this.httpClient.get()
                 .uri(uri + id)
