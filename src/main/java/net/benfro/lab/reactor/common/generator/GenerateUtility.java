@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.generator;
+package net.benfro.lab.reactor.common.generator;
 
 import com.github.javafaker.Faker;
 import lombok.AccessLevel;

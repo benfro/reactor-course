@@ -8,8 +8,8 @@ import net.benfro.lab.reactor.S04_fluxcreate.assignment.FileReaderImpl;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
 import net.benfro.lab.reactor.common.RunUtilities;
 import net.benfro.lab.reactor.common.SubscriberImpl;
-import net.benfro.lab.reactor.generator.GenerateUtility;
-import net.benfro.lab.reactor.generator.NameGenerator;
+import net.benfro.lab.reactor.common.generator.GenerateUtility;
+import net.benfro.lab.reactor.common.generator.NameGenerator;
 import reactor.core.publisher.Flux;
 
 @Slf4j

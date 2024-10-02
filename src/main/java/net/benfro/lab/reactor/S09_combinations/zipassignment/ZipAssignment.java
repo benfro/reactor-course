@@ -3,7 +3,7 @@ package net.benfro.lab.reactor.S09_combinations.zipassignment;
 import lombok.extern.slf4j.Slf4j;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
 import net.benfro.lab.reactor.common.RunUtilities;
-import net.benfro.lab.reactor.webclient.ConfigurableWebClient;
+import net.benfro.lab.reactor.common.webclient.ConfigurableWebClient;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;

@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.webclient;
+package net.benfro.lab.reactor.common.webclient;
 
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.resources.LoopResources;

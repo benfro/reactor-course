@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import net.benfro.lab.reactor.common.DefaultSubscriber;
-import net.benfro.lab.reactor.generator.GenerateUtility;
+import net.benfro.lab.reactor.common.generator.GenerateUtility;
 import reactor.core.publisher.Flux;
 
 public class FluxDemo {

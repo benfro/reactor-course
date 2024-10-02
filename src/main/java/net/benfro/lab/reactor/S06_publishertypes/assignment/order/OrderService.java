@@ -1,10 +1,10 @@
-package net.benfro.lab.reactor.S06_publishertypes.assignment;
+package net.benfro.lab.reactor.S06_publishertypes.assignment.order;
 
 import java.time.Duration;
 
 import net.benfro.lab.reactor.S06_publishertypes.assignment.revenue.RevenueService;
 import net.benfro.lab.reactor.common.RunUtilities;
-import net.benfro.lab.reactor.webclient.AbstractHttpClient;
+import net.benfro.lab.reactor.common.webclient.AbstractHttpClient;
 import reactor.core.publisher.Flux;
 
 public class OrderService {

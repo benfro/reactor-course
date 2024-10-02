@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.generator;
+package net.benfro.lab.reactor.common.generator;
 
 import java.util.function.Consumer;
 

@@ -1,4 +1,6 @@
-package net.benfro.lab.reactor.S06_publishertypes.assignment;
+package net.benfro.lab.reactor.S06_publishertypes.assignment.order;
+
+import net.benfro.lab.reactor.S06_publishertypes.assignment.OrderMessage;
 
 public record Order(String item, String category, int price, int quantity) {
 

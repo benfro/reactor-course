@@ -4,7 +4,7 @@ import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 import lombok.extern.slf4j.Slf4j;
-import net.benfro.lab.reactor.S06_publishertypes.assignment.Order;
+import net.benfro.lab.reactor.S06_publishertypes.assignment.order.Order;
 
 @Slf4j
 public class InventoryService implements Subscriber<Order> {
