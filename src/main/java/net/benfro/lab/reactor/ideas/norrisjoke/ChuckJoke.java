@@ -1,4 +1,4 @@
-package net.benfro.lab.reactor.own;
+package net.benfro.lab.reactor.ideas.norrisjoke;
 
 import java.util.List;
 
