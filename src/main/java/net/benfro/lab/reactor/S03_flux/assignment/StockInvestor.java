@@ -18,13 +18,13 @@ public class StockInvestor implements Subscriber<Integer> {
     Subscription subscription;
 
 
-    public static void main(String[] args) throws InterruptedException {
-        var client = new StockServiceClient();
-        client.getPriceChanges()
-            .subscribe(new StockInvestor());
-
-        Thread.sleep(Duration.ofSeconds(30));
-    }
+//    public static void main(String[] args) throws InterruptedException {
+//        var client = new StockServiceClient();
+//        client.getPriceChanges()
+//            .subscribe(new StockInvestor());
+//
+//        Thread.sleep(Duration.ofSeconds(30));
+//    }
 
     @Override
     public void onSubscribe(Subscription subscription) {

@@ -2,7 +2,7 @@ package net.benfro.lab.reactor.S12_sinks.assignment;
 
 import net.benfro.lab.reactor.common.RunUtilities;
 
-public class RunSlackConversation {
+public class App {
 
     public static void main(String[] args) {
         SlackRoom room = new SlackRoom("reactor");
