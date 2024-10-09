@@ -1,12 +1,12 @@
 package net.benfro.lab.reactor.ideas.norrisjoke;
 
-import java.time.Duration;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.benfro.lab.reactor.common.DefaultSubscriber;
 import net.benfro.lab.reactor.common.RunUtilities;
 import net.benfro.lab.reactor.common.webclient.ConfigurableWebClient;
+
+import java.time.Duration;
 
 public class ChuckJokeReader {
 
@@ -15,10 +15,10 @@ public class ChuckJokeReader {
         ObjectMapper mapper = new ObjectMapper();
 
         new ConfigurableWebClient()
-            .getChuckJoke("https://api.chucknorris.io/jokes/random")
-            .repeatWhen(flux  -> flux.delayElements(Duration.ofSeconds(2)).take(15))
-            .map(s -> getChuck(s, mapper).getValue())
-            .subscribe(DefaultSubscriber.of("chuckie"));
+                .stringFlux("https://api.chucknorris.io/jokes/random")
+                .repeatWhen(flux -> flux.delayElements(Duration.ofSeconds(2)).take(15))
+                .map(s -> getChuck(s, mapper).getValue())
+                .subscribe(DefaultSubscriber.of("chuckie"));
 
 
         RunUtilities.sleep(30);
