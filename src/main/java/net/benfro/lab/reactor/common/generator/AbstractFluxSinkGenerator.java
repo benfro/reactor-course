@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 import reactor.core.publisher.FluxSink;
 
-abstract class AbstractFluxSinkGenerator<T> implements Consumer<FluxSink<T>> {
+public abstract class AbstractFluxSinkGenerator<T> implements Consumer<FluxSink<T>> {
 
     protected FluxSink<T> sink;
 
