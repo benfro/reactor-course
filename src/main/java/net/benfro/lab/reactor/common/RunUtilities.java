@@ -16,6 +16,14 @@ public class RunUtilities {
         }
     }
 
+    public static void sleepMs(int millis) {
+        try {
+            Thread.sleep(Duration.ofMillis(millis));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     ///
     /// No Op method
     ///
